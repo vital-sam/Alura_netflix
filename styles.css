@@ -55,17 +55,21 @@ h1 {
 
 /* O Botão que troca o Tema (Sol/Lua) */
 .theme-toggle {
+  position: fixed;   /* 👈 tira do fluxo e fixa na tela */
+  top: 20px;         /* distância do topo */
+  right: 20px;       /* distância da direita */
+
   background: transparent;
   border: 1px solid var(--muted);
   color: var(--text);
   padding: 8px 12px;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 20px;
   font-size: 1.2rem;
   transition: all 0.2s ease;
-}
 
+  z-index: 1000;     
+}
 .theme-toggle:hover {
   background: rgba(255,255,255,0.1); /* Dá um brilho ao passar o mouse */
 }

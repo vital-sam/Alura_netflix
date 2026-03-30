@@ -38,7 +38,7 @@ O projeto foi construído do zero por alguém que queria aprender na prática, u
 ## 🗂️ Estrutura de arquivos
 
 ```
-Site2(Netflix)/
+Site-Netflix
 │
 ├── index.html          ← Tela de seleção de perfis
 ├── index.js            ← Lógica de clique nos perfis e navegação

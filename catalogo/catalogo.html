@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+    <link rel="stylesheet" href="catalogo.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar" id="navbar">
+        <div class="navbar-left">
+            <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Início</a></li>
+                    <li><a href="#">Séries</a></li>
+                    <li><a href="#">Filmes</a></li>
+                    <li><a href="#">Jogos</a></li>
+                    <li><a href="#">Bombando</a></li>
+                    <li><a href="#">Minha lista</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="navbar-right">
+
+            <!-- BUSCA: ícone que expande para campo de texto -->
+            <div class="search-wrapper" id="search-wrapper">
+                <i class="fas fa-search icon" id="search-icon"></i>
+                <input type="text" id="search-input" class="search-input" placeholder="Títulos, categorias...">
+            </div>
+
+            <!-- NOTIFICAÇÕES: ícone com badge + popup -->
+            <div class="nav-notification" id="notification-btn">
+                <i class="fas fa-bell icon"></i>
+                <span class="notification-badge" id="notification-count">3</span>
+
+                <div class="notification-popup" id="notification-popup">
+                    <p class="notification-popup__title">Notificações</p>
+                    <ul class="notification-list">
+                        <li class="notification-item unread">
+                            <img src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="">
+                            <div>
+                                <p><strong>Interstellar</strong> foi adicionado à sua lista</p>
+                                <span>Agora mesmo</span>
+                            </div>
+                        </li>
+                        <li class="notification-item unread">
+                            <img src="https://image.tmdb.org/t/p/w500/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg" alt="">
+                            <div>
+                                <p><strong>Squid Game:</strong> nova temporada disponível</p>
+                                <span>2 horas atrás</span>
+                            </div>
+                        </li>
+                        <li class="notification-item unread">
+                            <img src="https://image.tmdb.org/t/p/w500/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg" alt="">
+                            <div>
+                                <p><strong>The Last of Us</strong> — continue assistindo</p>
+                                <span>Ontem</span>
+                            </div>
+                        </li>
+                        <li class="notification-item">
+                            <img src="https://image.tmdb.org/t/p/w500/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg" alt="">
+                            <div>
+                                <p>Você assistiu <strong>La Casa de Papel</strong> até o fim</p>
+                                <span>3 dias atrás</span>
+                            </div>
+                        </li>
+                        <li class="notification-item">
+                            <img src="https://image.tmdb.org/t/p/w500/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg" alt="">
+                            <div>
+                                <p><strong>Inception</strong> está em alta esta semana</p>
+                                <span>5 dias atrás</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PERFIL: foto + seta + dropdown com troca de perfil e logout -->
+            <div class="profile-menu" id="profile-menu-btn">
+                <img id="user-profile-img" class="profile-icon"
+                     src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Perfil">
+                <i class="fas fa-caret-down icon profile-arrow" style="font-size: 14px;"></i>
+
+                <div class="profile-dropdown" id="profile-dropdown">
+                    <p class="profile-dropdown__title">Trocar perfil</p>
+                    <ul class="profile-dropdown__list" id="profile-switch-list">
+                        <li class="profile-dropdown__item" data-nome="Nestor"   data-img="../Assets/perfil1.jpg">
+                            <img src="../Assets/perfil1.jpg" alt="Nestor">
+                            <span>Nestor</span>
+                        </li>
+                        <li class="profile-dropdown__item" data-nome="Megan"   data-img="../Assets/perfil2.jpg">
+                            <img src="../Assets/perfil2.jpg" alt="Megan">
+                            <span>Megan</span>
+                        </li>
+                        <li class="profile-dropdown__item" data-nome="Luna" data-img="../Assets/perfil3.jpg">
+                            <img src="../Assets/perfil3.jpg" alt="Luna">
+                            <span>Luna</span>
+                        </li>
+                        <li class="profile-dropdown__item" data-nome="Kaio" data-img="../Assets/perfil4.jpg">
+                            <img src="../Assets/perfil4.jpg" alt="Kaio">
+                            <span>Kaio</span>
+                        </li>
+                    </ul>
+                    <hr class="profile-dropdown__divider">
+                    <button class="profile-dropdown__logout" id="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Sair da Netflix
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="sliders-container" id="main-content"></main>
+
+    <div id="search-overlay" class="search-overlay hidden">
+        <p id="search-empty-msg">Nenhum resultado encontrado.</p>
+        <div id="search-results-container"></div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Imersão Alura AI</p>
+            <ul class="footer-links">
+                <li><a href="#">Centro de ajuda</a></li>
+                <li><a href="#">Termos de uso</a></li>
+                <li><a href="#">Privacidade</a></li>
+                <li><a href="#">Entre em contato</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/components/Card.js"></script>
+    <script src="js/components/Carousel.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

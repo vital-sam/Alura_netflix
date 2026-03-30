@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Netflix - Quem está assistindo?</title>
+
+  <script>
+    (function () {
+      try {
+        const temaSalvo = localStorage.getItem('theme'); 
+        if (temaSalvo === 'light' || temaSalvo === 'dark') {
+          document.documentElement.setAttribute('data-theme', temaSalvo);
+        } else {
+          // Se não houver nada salvo, ele começa no modo escuro (padrão Netflix)
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Quem está assistindo?</h1>
+
+    <button id="theme-toggle" class="theme-toggle" title="Trocar as cores do site">
+      <span class="theme-toggle__icon">🌙</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="profiles">
+      <ul class="profiles-wrapper">
+        <li class="profiles-group">
+          <ol class="profile-list">
+            
+            <li class="profile" tabindex="0">
+              <img src="Assets/perfil1.jpg" alt="Foto do Nestor">
+              <p>Nestor</p>
+            </li>
+
+            <li class="profile" tabindex="0">
+              <img src="Assets/perfil2.jpg" alt="Foto da Megan">
+              <p>Megan</p>
+            </li>
+
+            <li class="profile" tabindex="0">
+              <img src="Assets/perfil3.jpg" alt="Foto da Luna">
+              <p>Luna</p>
+            </li>
+
+            <li class="profile" tabindex="0">
+              <img src="Assets/perfil4.jpg" alt="Foto do Kaio">
+              <p>Kaio</p>
+            </li>
+
+          </ol>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Netflix. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="index.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+/* ESTE ARQUIVO CONTROLA O VISUAL (CORES, TAMANHOS E POSIÇÕES).
+   Ele usa "variáveis" (os nomes com --), que funcionam como potes de tinta 
+   que guardamos para usar no site todo.
+*/
+
+/* Cores padrão quando o site abre (Modo Escuro) */
+:root {
+  --bg: #000000;             /* Cor do fundo (Preto) */
+  --text: #ffffff;           /* Cor do texto (Branco) */
+  --muted: #999999;          /* Cor de textos menos importantes (Cinza) */
+  --accent: #e50914;         /* Cor principal (Vermelho Netflix) */
+  --profile-border: #ffffff; /* Cor da borda da foto */
+  --gap-default: 40px;       /* Espaço padrão entre as coisas */
+  --transition-fast: 180ms;  /* Velocidade das animações */
+}
+
+/* Cores que mudam quando você ativa o Modo Claro (Botão do Sol) */
+html[data-theme="light"] {
+  --bg: #ffffff;             /* Fundo vira Branco */
+  --text: #111111;           /* Texto vira Preto */
+  --muted: #666666;          /* Cinza fica mais escuro */
+  --profile-border: #111111; /* Borda da foto fica preta */
+}
+
+/* Configurações gerais para que o site ocupe a tela toda sem erros */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Deixa as letras mais nítidas na tela */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Faz a troca de cores entre claro/escuro ser suave */
+  transition: background-color var(--transition-fast) ease, color var(--transition-fast) ease;
+}
+
+/* Configuração do Título principal e do topo do site */
+header {
+  padding: 40px 4% 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: clamp(1.5rem, 5vw, 3.5rem); /* O tamanho da letra aumenta se a tela for grande */
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* O Botão que troca o Tema (Sol/Lua) */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--muted);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255,255,255,0.1); /* Dá um brilho ao passar o mouse */
+}
+
+/* Área onde os perfis ficam organizados */
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.profiles-wrapper {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.profile-list {
+  display: flex;
+  flex-wrap: wrap;       /* Se não couber na linha, pula para a de baixo */
+  justify-content: center;
+  gap: var(--gap-default);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilo de cada Perfil individual */
+.profile {
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+  outline: none;
+}
+
+/* Efeito de subir um pouco quando você seleciona ou usa o teclado */
+.profile:focus {
+  outline: 3px solid rgba(229,9,20,0.12);
+  transform: translateY(-4px);
+}
+
+/* Estilo das Fotos dos Perfis */
+.profile img {
+  width: 150px;
+  height: 150px;
+  border-radius: 4px; /* Formato quadrado levemente arredondado */
+  object-fit: cover;
+  border: 2px solid transparent;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Quando o mouse passa em cima da foto, ela ganha uma borda branca/preta */
+@media (hover: hover) {
+  .profile img:hover {
+    border-color: var(--profile-border);
+    transform: translateY(-4px);
+  }
+}
+
+/* Estilo do Nome embaixo da foto */
+.profile p {
+  margin: 10px 0 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* Quando você CLICA no perfil, ele ganha a borda vermelha da Netflix */
+.profile.selected img {
+  border-color: var(--accent);
+  transform: scale(1.05); /* Aumenta um pouquinho de tamanho */
+}
+
+/* Rodapé do site */
+footer {
+  padding: 40px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* AJUSTES PARA CELULAR (Telas pequenas) */
+@media (max-width: 480px) {
+  :root { --gap-default: 12px; }
+  .profile img { width: 100px; height: 100px; }
+  h1 { font-size: 1.8rem; }
+}
